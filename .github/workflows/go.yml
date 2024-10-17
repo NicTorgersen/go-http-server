@@ -20,7 +20,7 @@ jobs:
         go-version-file: 'go.mod'
 
     - name: Build
-      run: go build -o go-http-server -v . 
+      run: go build -o go-http-server-linux64 -v . 
 
     - name: Upload Artifact
       uses: skx/github-action-publish-binaries@master
