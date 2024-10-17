@@ -20,7 +20,7 @@ jobs:
         go-version-file: 'go.mod'
 
     - name: Build
-      run: go build -v . -o go-http-server
+      run: go build -o go-http-server -v . 
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
