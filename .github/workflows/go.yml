@@ -23,11 +23,12 @@ jobs:
       run: go build -o go-http-server -v . 
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: skx/github-actions-publish-binaries@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: go-http-server-linux64
-        path: go-http-server
-        if-no-files-found: error
+        releaseId: ${{ needs.create_release.outputs.id }}
+        args: 'go-http-server'
 
     - name: Test
       run: go test -v
