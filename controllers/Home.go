@@ -35,6 +35,15 @@ func Home(writer http.ResponseWriter, request *http.Request) {
         log.Printf("Could not read resources/views/home.html: %s (%s)", err.Error(), cwd) 
         writer.WriteHeader(500)
         writer.Write([]byte("An internal server error happened."))
+        
+        return
+    }
+
+    if request.Method != "GET" {
+        writer.WriteHeader(405)
+        writer.Write([]byte("Method not allowed."))
+
+        return
     }
 
 	writer.Write(data)
