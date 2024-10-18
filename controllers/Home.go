@@ -10,6 +10,8 @@ func Home(writer http.ResponseWriter, request *http.Request) {
     data, err := os.ReadFile("./resources/views/home.html")
     cwd, _ := os.Getwd()
 
+    log.Printf("Received %s from %s", request.Method, request.RemoteAddr)
+
     if err != nil {
         log.Printf("Could not read resources/views/home.html: %s (%s)", err.Error(), cwd) 
         writer.WriteHeader(500)
